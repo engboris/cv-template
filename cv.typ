@@ -1,9 +1,8 @@
-#import "icons.typ": *
+#import "@preview/fontawesome:0.5.0": *
 
 /* ==============================================
    Style functions
    ============================================== */
-
 #let sepline(color) = {
   v(-12pt);
   line(length: 100%, stroke: color);
@@ -13,8 +12,13 @@
 /* ==============================================
    CV constructors
    ============================================== */
-   
-#let cv_block(title: "", year: "", subtitle: "", place:"", description: "") = {
+#let cv_block(
+  title: "",
+  year: "",
+  subtitle: "",
+  place:"",
+  description: ""
+) = {
   grid(
     columns: (1fr, auto),
     rows: 1em,
@@ -39,13 +43,11 @@
 
 #let cv_item(title, description) = {
   [*#title* #h(3pt) #description]
-  h(2em)
 }
 
 /* ==============================================
    Project configuration
    ============================================== */
-   
 #let project(
   title: "",
   firstname: "",
@@ -55,14 +57,15 @@
   github: "",
   phone: "",
   main_color: black,
-  layout_type: "compact",
+  main_font: "Helvetica",
+  socials_below_name: false,
   body) = {
 
   /* -----------------------------------
      Header
      ----------------------------------- */
   set page(margin: (left: 12mm, right: 12mm, top: 12mm, bottom: 12mm))
-  set text(font: "IBM Plex Sans", lang: "en")
+  set text(font: main_font, lang: "en")
   let title_size = 35pt;
 
   show heading.where(level: 1): it => text(
@@ -84,21 +87,21 @@
       columns: (120pt, 150pt),
       rows: (15pt, auto),
       gutter: 1pt,
-      [#fa(fa_email) #h(2pt) #email],
-      [#fa(fa_phone) #h(2pt) #phone],
-      [#fa(fa_website) #h(2pt) #link(website)],
-      [#fa(fa_github) #h(2pt) #link(github)]
+      [#fa-icon("envelope", solid: true) #h(2pt) #email],
+      [#fa-icon("phone", solid: true) #h(2pt) #phone],
+      [#fa-icon("globe", solid: true) #h(2pt) #link(website)],
+      [#fa-icon("github", solid: true) #h(2pt) #link(github)],
     )
   }
 
   let info_extended = {
-      [#fa(fa_email) #h(2pt) #email #h(2em)]
-      [#fa(fa_phone) #h(2pt) #phone #h(2em)]
-      [#fa(fa_website) #h(2pt) #link(website) #h(2em)]
-      [#fa(fa_github) #h(2pt) #link(github)]
+    [#fa-icon("envelope", solid: true) #h(2em) #email]
+    [#fa-icon("phone", solid: true) #h(2em) #phone]
+    [#fa-icon("globe", solid: true) #h(2em) #link(website)]
+    [#fa-icon("github", solid: true) #h(2em) #link(github)]
   }
 
-  if layout_type == "extended" {
+  if socials_below_name {
     full_name
     v(-2.5em)
     text(weight: "light", 10pt, black.lighten(10%), info_extended)
@@ -121,6 +124,5 @@
   /* -----------------------------------
      Main content
      ----------------------------------- */
-
   body
 }

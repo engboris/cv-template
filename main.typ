@@ -2,30 +2,28 @@
 
 #show: project.with(
   title: lorem(10),
-  
   firstname: "First",
   familyname: "Second",
-  
   website: "www.website.net",
   email: "name@email.com",
   github: "https://github.com/username",
   phone: "+00 0 00 00 00 00",
-
-  /* layout_type is either "compact" (default) or "extended"
-     for longer names */
-  layout_type: "compact",
   main_color: eastern,
+  main_font: "Helvetica",
+  socials_below_name: false,
 )
 
-= Formation
+= Education
 
 #cv_list(
   [*PhD in Computer Science*],
   [Université Paris 13],
   [2019--2023],
+
   [*Master Parisien de Recherche en Informatique (MPRI)*],
   [Université Paris 7],
   [2018–2019],
+
   [*Bachelor in Computer Science*],
   [Université Paris 7],
   [2016--2017]
@@ -67,20 +65,26 @@
 
 = Skills
 
-#cv_item([Programming], [OCaml, Coq, C/C++, Java, Python])
-#cv_item([Project management], [Git, SVN])
-
-#cv_item([Web development], [HTML, CSS, Jekyll, Hugo])
-#cv_item([Typesetting], [LaTeX, Typst])
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1em,
+  cv_item([Programming], [Skill1, Skill2, Skill3, Skill4, Skill5]),
+  cv_item([Project management], [Skill1, Skill2]),
+  cv_item([Web development], [Skill1, Skill2, Skill3]),
+  cv_item([Typesetting], [Skill1, Skill2]),
+)
 
 = Languages
 
-#cv_item([French], [Native language])
-#cv_item([English], [Professional proficiency])
-#cv_item([Japanese], [Professional proficiency])
-
-#cv_item([Italian], [Professional proficiency])
-#cv_item([Spanish], [Professional proficiency])
+#grid(
+  columns: (1fr, 1fr),
+  gutter: 1em,
+  cv_item([French], [Native]),
+  cv_item([English], [Professional proficiency]),
+  cv_item([Japanese], [Professional proficiency]),
+  cv_item([Italian], [Professional proficiency]),
+  cv_item([Spanish], [Professional proficiency]),
+)
 
 = Hobbies
 
